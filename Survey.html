@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <script>
+        function submitForm() {
+            // Get values from the form
+            var firstName = document.getElementById("first-name").value;
+            var lastName = document.getElementById("last-name").value;
+            var dateOfBirth = document.getElementById("date-of-birth").value;
+            var country = document.getElementById("country").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var profession = document.getElementById("profession").value;
+            var email = document.getElementById("email").value;
+            var mobileNumber = document.getElementById("mobile-number").value;
+
+            // Validate the form
+            if (
+                firstName === "" ||
+                lastName === "" ||
+                dateOfBirth === "" ||
+                country === "Select" ||
+                gender === undefined ||
+                profession === "" ||
+                email === "" ||
+                mobileNumber === ""
+            ) {
+                alert("Please fill in all the required fields.");
+                return;
+            }
+
+            // Display the submitted data in a popup
+            var popupMessage = "Submitted Information:\n\n" +
+                "First Name: " + firstName + "\n" +
+                "Last Name: " + lastName + "\n" +
+                "Date of Birth: " + dateOfBirth + "\n" +
+                "Country: " + country + "\n" +
+                "Gender: " + gender + "\n" +
+                "Profession: " + profession + "\n" +
+                "Email: " + email + "\n" +
+                "Mobile Number: " + mobileNumber;
+
+            alert(popupMessage);
+
+            // Reset the form
+            document.getElementById("survey-form").reset();
+        }
+
+        function resetForm() {
+            // Reset the form
+            document.getElementById("survey-form").reset();
+        }
+    </script>
+</head>
+<body>
+    <h2>Survey Form</h2>
+    <form id="survey-form">
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required><br><br>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required><br><br>
+
+        <label for="date-of-birth">Date of Birth:</label>
+        <input type="date" id="date-of-birth" name="date-of-birth" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="Select">Select</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">UK</option>
+            <!-- Add more country options here -->
+        </select><br><br>
+
+        <label>Gender:</label><br>
+        <input type="checkbox" id="male" name="gender" value="Male"> Male
+        <input type="checkbox" id="female" name="gender" value="Female"> Female
+        <input type="checkbox" id="other" name="gender" value="Other"> Other
+        <br><br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" name="profession" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="mobile-number">Mobile Number:</label>
+        <input type="tel" id="mobile-number" name="mobile-number" required><br><br>
+
+        <input type="button" value="Submit" onclick="submitForm()">
+        <input type="button" value="Reset" onclick="resetForm()">
+    </form>
+</body>
+</html>
